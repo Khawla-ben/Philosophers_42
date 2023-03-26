@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:49:05 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/03/19 18:45:26 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/03/26 23:41:19 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ typedef struct s_data
 	int	t_eat;
 	int	t_sleep;
 	int	nb_t_to_eat;
-	int t_beginning;
+	long long t_beginning;
 	struct each_philo *p;
-	pthread_mutex_t *fork;
 	pthread_mutex_t write;
+	pthread_mutex_t *fork;
+	pthread_mutex_t time;
+	int die;
 	
 }t_data;
 
@@ -41,7 +43,6 @@ typedef struct each_philo
 	int nb_repast;
 	int	l_fork;
 	int	r_fork;
-	// int	/die ;
 	t_data *my_data;
 	pthread_t thread;
 	
