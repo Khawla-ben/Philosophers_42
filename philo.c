@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:34:16 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/03/26 14:59:13 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/04/01 23:11:43 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_atoi(char *str)
 	n = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32 && str[i]))
 		i++;
-	
 	if (str[0] == '-')
 	{
 		write(2, "Error\n", 6);
@@ -37,7 +36,7 @@ int	ft_atoi(char *str)
 	}
 	while (str[i] && (ft_isdigit(str[i]) == 1))
 		n = (n * 10 + (str[i++] - 48));
-	if ((n > 2147483647) || (n == 0) || (ft_isdigit(str[i]) == 0 && str[i]))
+	if ((n > 2147483647) || (n < 0) || (ft_isdigit(str[i]) == 0 && str[i]))
 	{
 		write(2, "Error\n", 6);
 		exit(1);
@@ -45,23 +44,29 @@ int	ft_atoi(char *str)
 	return (n);
 }
 
-void parcing(int ac, char **av)
+void	parcing(int ac, char **av)
 {
-	int i;
+	int	i;
 
 	i = ac - 1;
 	while (i > 0)
 		ft_atoi(av[i--]);
 }
 
-int main(int ac, char **av)
+// void f()
+// {
+// 	system("leaks philo");
+// }
+
+int	main(int ac, char **av)
 {
+	// atexit(f);
 	if (ac == 6 || ac == 5)
 	{
 		parcing(ac, av);
 		create_threads(av, ac);
 	}
 	else
-		write(1, "INVALID ARGS\n",14);
+		write(1, "INVALID ARGS\n", 14);
 	return (0);
 }

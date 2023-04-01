@@ -75,3 +75,69 @@ The pthread_mutex_lock() function locks the mutex referenced by mutex.
 The pthread_mutex_unlock :
 The pthread_mutex_unlock() function unlocks the mutex referenced by mutex.
 
+
+
+int stop_function(t_data *my_data)
+{
+	int i;
+	int sum;
+	
+	i = 0;
+	sum = 0;
+	if ((ft_time() - my_data->p->last_t_eat) >= (my_data->t_die))
+	{
+		pthread_mutex_lock(&my_data->write);
+		printf("%lld %d %s\n", ft_time() - my_data->t_beginning, my_data->p->id, "is died");
+		pthread_mutex_unlock(&my_data->write);
+		return (0);
+	}
+	while (i < my_data->nb_philo)
+	{
+		if ((my_data->p[i].nb_repast) == (my_data->nb_t_to_eat))
+		{
+			if (sum == my_data->nb_t_to_eat)
+			{
+				pthread_mutex_lock(&my_data->write);
+				printf("%lld %d %s\n", ft_time() - my_data->t_beginning, my_data->p->id, "they all eat (allhamdolillah)");
+				pthread_mutex_unlock(&my_data->write);
+				return (0);
+			}
+			sum++;
+			i++;
+		}
+	}
+	return (1);
+}
+
+
+int stop_function(t_data *my_data)
+{
+	// int i;
+	// int sum;
+	
+	// i = 0;
+	// sum = 0;
+	if ((ft_time() - my_data->p->last_t_eat) >= (my_data->t_die))
+	{
+		pthread_mutex_lock(&my_data->write);
+		printf("%lld %d %s\n", ft_time() - my_data->t_beginning, my_data->p->id, "is died");
+		pthread_mutex_unlock(&my_data->write);
+		return (0);
+	}
+	// while (i < my_data->nb_philo)
+	// {0
+	// 	if ((my_data->p[i].nb_repast) == (my_data->nb_t_to_eat))
+	// 	{
+			if ((my_data->p->nb_repast)== my_data->nb_t_to_eat)
+			{
+				pthread_mutex_lock(&my_data->write);
+				printf("%lld %d %s\n", ft_time() - my_data->t_beginning, my_data->p->id, "they all eat (allhamdolillah)");
+				pthread_mutex_unlock(&my_data->write);
+				return (0);
+			}
+			// sum++;
+			// i++;
+		// }
+	// }
+	return (1);
+}

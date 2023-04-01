@@ -6,7 +6,7 @@
 #    By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 16:45:50 by kben-ham          #+#    #+#              #
-#    Updated: 2023/03/19 18:31:58 by kben-ham         ###   ########.fr        #
+#    Updated: 2023/04/01 21:51:49 by kben-ham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread -g
 
 RM = rm -rf
 
-MY_FILES = philo.c try.c
+MY_FILES = philo.c try.c initialize.c
 
 OBJECT = $(MY_FILES:.c=.o)
 
@@ -39,5 +39,3 @@ fclean: clean
 re: fclean all
 
 .PHONY : all clean fclean re
-
-# -pthread flag.
