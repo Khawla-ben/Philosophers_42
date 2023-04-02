@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 23:55:58 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/03/31 23:18:23 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/04/02 02:54:28 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	initialize_data(char **av, t_data *my_data, int ac)
 	my_data->t_die = ft_atoi(av[2]);
 	my_data->t_eat = ft_atoi(av[3]);
 	my_data->t_sleep = ft_atoi(av[4]);
-	my_data->die = 0;
 	if (ac == 6)
 		my_data->nb_t_to_eat = ft_atoi(av[5]);
 	else

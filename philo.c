@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:34:16 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/04/02 02:19:27 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:25:04 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,21 @@ void	parcing(int ac, char **av)
 	i = ac - 1;
 	while (i > 0)
 		ft_atoi(av[i--]);
+}
+
+void	create_threads(char **av, int ac)
+{
+	t_data	*my_data;
+
+	my_data = malloc (sizeof(t_data));
+	if (!my_data)
+		return ;
+	my_data->t_beginning = ft_time();
+	initialize_data(av, my_data, ac);
+	initialize_mutex(my_data);
+	initialize_philo(my_data);
+	all(my_data);
+	return ;
 }
 
 int	main(int ac, char **av)

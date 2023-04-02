@@ -6,7 +6,7 @@
 #    By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 16:45:50 by kben-ham          #+#    #+#              #
-#    Updated: 2023/04/02 02:21:33 by kben-ham         ###   ########.fr        #
+#    Updated: 2023/04/02 03:31:52 by kben-ham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
 
 RM = rm -rf
 
-MY_FILES = philo.c try.c initialize.c
+MY_FILES = philo.c thread.c initialize.c other.c
 
 OBJECT = $(MY_FILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:49:05 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/03/31 23:56:45 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:23:31 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,43 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-
 typedef struct s_data
 {
-	int nb_philo;
-	long long	t_die;
-	int	t_eat;
-	int	t_sleep;
-	int	nb_t_to_eat;
-	long long t_beginning;
-	struct each_philo *p;
-	pthread_mutex_t write;
-	pthread_mutex_t *fork;
-	pthread_mutex_t time;
-	int die;
-	
+	int					nb_philo;
+	int					t_eat;
+	int					t_sleep;
+	int					nb_t_to_eat;
+	long long			t_die;
+	long long			t_beginning;
+	struct each_philo	*p;
+	pthread_mutex_t		write;
+	pthread_mutex_t		*fork;
+	pthread_mutex_t		time;
 }t_data;
 
 typedef struct each_philo
 {
-	int id;
-	long long last_t_eat;
-	int nb_repast;
-	int	l_fork;
-	int	r_fork;
-	t_data *my_data;
-	pthread_t thread;
+	int			id;
+	int			nb_repast;
+	int			l_fork;
+	int			r_fork;
+	long long	last_t_eat;
+	t_data		*my_data;
+	pthread_t	thread;
 }t_philo;
 
-void create_threads(char **av, int ac);
-void initialize_data(char **av, t_data *my_data, int ac);
-int	ft_atoi(char *str);
+void		create_threads(char **av, int ac);
+void		initialize_data(char **av, t_data *my_data, int ac);
+void		initialize_philo(t_data *my_data);
+void		initialize_mutex(t_data *my_data);
+void		*thread_function(void *arg);
+void		ft_usleep(long long tmp);
+void		my_printf(t_data *my_data, char *test, int id);
+void		count(t_philo *p);
+void		destroy(t_data *my_data);
+void		all(t_data *my_data);
+int			stop_function(t_data *my_data);
+int			ft_atoi(char *str);
 long long	ft_time(void);
-void 	initialize_philo(t_data *my_data);
-void initialize_mutex(t_data *my_data);
-void *thread_function(void *arg);
+
 #endif
