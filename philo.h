@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:49:05 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/04/02 03:23:31 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:50:38 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void		initialize_philo(t_data *my_data);
 void		initialize_mutex(t_data *my_data);
 void		*thread_function(void *arg);
 void		ft_usleep(long long tmp);
-void		my_printf(t_data *my_data, char *test, int id);
+void		my_print(t_data *my_data, char *test, int id);
+void		my_print1(t_data *my_data, char *test, int id);
 void		count(t_philo *p);
 void		destroy(t_data *my_data);
 void		all(t_data *my_data);
