@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:34:16 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/04/01 23:11:43 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/04/02 02:19:27 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_atoi(char *str)
 	}
 	while (str[i] && (ft_isdigit(str[i]) == 1))
 		n = (n * 10 + (str[i++] - 48));
-	if ((n > 2147483647) || (n < 0) || (ft_isdigit(str[i]) == 0 && str[i]))
+	if ((n > 2147483647) || (n == 0) || (ft_isdigit(str[i]) == 0 && str[i]))
 	{
 		write(2, "Error\n", 6);
 		exit(1);
@@ -53,14 +53,8 @@ void	parcing(int ac, char **av)
 		ft_atoi(av[i--]);
 }
 
-// void f()
-// {
-// 	system("leaks philo");
-// }
-
 int	main(int ac, char **av)
 {
-	// atexit(f);
 	if (ac == 6 || ac == 5)
 	{
 		parcing(ac, av);

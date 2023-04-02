@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 23:56:27 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/04/01 23:18:50 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/04/02 02:23:09 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,31 +75,42 @@ long long	ft_time(void)
 	return ((tm.tv_sec * 1000ll) + (tm.tv_usec / 1000ll));
 }
 
+int func2(t_data *my_data)
+{
+	int i;
+	
+	i = 0;
+	if (my_data->nb_t_to_eat == -1)
+		return (1);
+	while (i < my_data->nb_philo)
+	{
+		if (my_data->p[i].nb_repast < my_data->nb_t_to_eat)//////////ookokok
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int stop_function(t_data *my_data)
 {
 	int i;
-	int sum;
-	
-	i = 0;
-	sum = 0;
-	if ((ft_time() - my_data->p->last_t_eat) >= (my_data->t_die))
+
+	while (func2(my_data))
 	{
-		pthread_mutex_lock(&my_data->write);
-		printf("%lld %d %s\n", ft_time() - my_data->t_beginning, my_data->p->id, "is died");
-		pthread_mutex_unlock(&my_data->write);
-		return (0);
-	}
-	while ((i < my_data->nb_philo) && ((ft_time() - my_data->p->last_t_eat) < (my_data->t_die)))
-	{
-		if ((my_data->p[i].nb_repast) == (my_data->nb_t_to_eat))
+		i = 0;
+		while (i < my_data->nb_philo)
 		{
-			if (sum == my_data->nb_t_to_eat)
+			if ((ft_time() - my_data->p[i].last_t_eat) >= (my_data->t_die))//////////ookokok
+			{
+				pthread_mutex_lock(&my_data->write);
+				printf("%lld %d %s\n", ft_time() - my_data->t_beginning, my_data->p[i].id, "is died");
+				pthread_mutex_unlock(&my_data->write);
 				return (0);
-			sum++;
+			}
 			i++;
 		}
 	}
-	return (1);
+	return (0);
 }
 
 void	create_threads(char **av, int ac)
@@ -127,6 +138,11 @@ void	create_threads(char **av, int ac)
 		pthread_detach(my_data->p[j].thread);
 		j++;
 	}
-	while (stop_function(my_data))
-	{}
+	stop_function(my_data);
+	j = -1;
+	while (++j < my_data->nb_philo)
+		pthread_mutex_destroy(&my_data->fork[j]);
+	pthread_mutex_destroy(&my_data->write);
+	pthread_mutex_destroy(&my_data->time);
+	return ;
 }
