@@ -20,4 +20,6 @@ https://linuxhint.com/gettimeofday_c_language/
 https://man7.org/linux/man-pages/man3/pthread_create.3.html
 https://docs.google.com/presentation/d/1sl76POlwwGXQLtbhJsFQ-g4SOzaaygVpTwfYMh2A118/edit#slide=id.g1ccc520b98d_0_32
 https://miro.com/app/board/uXjVPlJsu-M=/
+https://docs.google.com/document/d/17xcOUP6HzNdIZhurXihoUN8cMgu_oMvX-TXitrpJ9v0/edit#
+https://docs.google.com/presentation/d/1sl76POlwwGXQLtbhJsFQ-g4SOzaaygVpTwfYMh2A118/edit#slide=id.g1ccc520b98d_0_32
 
